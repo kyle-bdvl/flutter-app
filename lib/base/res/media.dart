@@ -1,0 +1,6 @@
+class AppMedia {
+  //assets\images\logo.png == folder to get the image
+  // we don't need to create an instance because we use static. when we use "_" == private variable
+  static const _baseImage = "assets/images";
+  static const logo = "$_baseImage/logo.png";
+}
