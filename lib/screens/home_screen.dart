@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                       //decoration is a widget with a type of decoration widget can't jave color simutaneously
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
+                        image: const DecorationImage(
                           image: AssetImage(AppMedia.logo),
                         ),
                       ),
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                   smallText: 'View all',
                 ),
                 const SizedBox(height: 20),
-                TicketView(),
+                const TicketView(),
               ],
             ),
           ),
