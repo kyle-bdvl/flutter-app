@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTicketTabs extends StatelessWidget {
-  const AppTicketTabs({super.key});
+  final String firstTab;
+  final String secondTab;
+  const AppTicketTabs({
+    super.key,
+    required this.firstTab,
+    required this.secondTab,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +18,10 @@ class AppTicketTabs extends StatelessWidget {
         color: const Color(0xFFF4F6FD),
       ),
 
-      child: const Row(
+      child: Row(
         children: [
-          AppTabs(tabText: "All Ticket", tabBorder: false),
-          AppTabs(tabText: "Hotel", tabBorder: true),
+          AppTabs(tabText: firstTab, tabBorder: false),
+          AppTabs(tabText: secondTab, tabBorder: true),
         ],
       ),
     );
