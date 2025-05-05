@@ -3,4 +3,5 @@ class AppMedia {
   // we don't need to create an instance because we use static. when we use "_" == private variable
   static const _baseImage = "assets/images";
   static const logo = "$_baseImage/logo.png";
+  static const hotelRoom = "$_baseImage/hotel_room.png";
 }
