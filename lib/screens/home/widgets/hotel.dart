@@ -23,6 +23,7 @@ class Hotel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            height: 180,
             decoration: BoxDecoration(
               color: AppStyles.primaryColor,
               borderRadius: BorderRadius.circular(12),

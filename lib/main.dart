@@ -1,4 +1,7 @@
+import 'package:ticket_app/base/utils/app_routes.dart';
+import 'package:ticket_app/screens/home/all_hotels.dart';
 import 'package:ticket_app/screens/home/all_tickets.dart';
+import 'package:ticket_app/screens/ticket/ticket_screen.dart';
 
 import 'base/bottom_nav_bar.dart';
 
@@ -13,11 +16,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //
+    //`
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const BottomNavbar(),
-      routes: {"all_tickets": (context) => const AllTickets()},
+      routes: {
+        "all_tickets": (context) => const AllTickets(),
+        AppRoutes.ticketScreen: (context) => const TicketScreen(),
+        AppRoutes.allHotels: (context) => const AllHotels(),
+      },
     );
   }
 }
