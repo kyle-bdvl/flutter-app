@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
 import 'package:ticket_app/base/utils/all_json.dart';
+import 'package:ticket_app/controller/text_expansion_controller.dart';
+import 'package:get/get.dart';
 
 class HotelDetail extends StatefulWidget {
   const HotelDetail({super.key});
@@ -125,43 +127,39 @@ class _HotelDetailState extends State<HotelDetail> {
   }
 }
 
-class ExpandedTextWidget extends StatefulWidget {
+class ExpandedTextWidget extends StatelessWidget {
   final String text;
 
-  const ExpandedTextWidget({super.key, required this.text});
+  ExpandedTextWidget({super.key, required this.text});
 
-  @override
-  State<ExpandedTextWidget> createState() => _ExpandedTextWidgetState();
-}
-
-class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
-  bool isExpanded = false;
-  _toggleExpansion() {
-    setState(() {
-      isExpanded = !isExpanded;
-    });
-    print('i have been pressed! ${isExpanded}');
-  }
+  final TextExpansionController controller = Get.put(TextExpansionController());
 
   @override
   Widget build(BuildContext context) {
-    var textWideget = Text(
-      widget.text,
-      maxLines: isExpanded ? null : 3,
-      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        textWideget,
-        GestureDetector(
-          onTap: () => _toggleExpansion(),
-          child: Text(
-            isExpanded ? 'Less' : 'More',
-            style: AppStyles.textStyle.copyWith(color: AppStyles.primaryColor),
+    return Obx(() {
+      var textWideget = Text(
+        text,
+        maxLines: controller.isExpanded.value ? null : 3,
+        overflow:
+            controller.isExpanded.value
+                ? TextOverflow.visible
+                : TextOverflow.ellipsis,
+      );
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          textWideget,
+          GestureDetector(
+            onTap: () => controller.toggleExpansion(),
+            child: Text(
+              controller.isExpanded.value ? 'Less' : 'More',
+              style: AppStyles.textStyle.copyWith(
+                color: AppStyles.primaryColor,
+              ),
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
